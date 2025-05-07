@@ -87,6 +87,7 @@ tabel, visualisasi = st.tabs(["Tabel", "Visualisasi"])
 with tabel:
     minCal, maxCal = st.slider("Pilih Rentang Kalori", min(df["Calories"]), max(df["Calories"]), (min(df["Calories"]), max(df["Calories"])))
     filtered_df = df.query(f"Calories >= {minCal} & Calories <= {maxCal}")
+    filtered_df = df[(df["Calories"] >= minCal) & (df["Calories"] <= maxCal)]
     
     if search_makanan:
         filtered_df = filtered_df[filtered_df["Item"].str.contains(search_makanan, case=False)]
