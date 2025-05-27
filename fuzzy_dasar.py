@@ -100,24 +100,37 @@ st.write(f"Kipas Angin: {kipas_angin_sim.output['kipas_angin']:.2f}")
 st.write(f"Pendingin Udara: {pendingin_udara_sim.output['pendingin_udara']:.2f}")
 st.write(f"Pemanas: {pemanas_sim.output['pemanas']:.2f}")
 
-def plot_fuzzy_sets(variable, title):
+def plot_fuzzy_sets(variable, title, input_value):
     st.write(f"#### {title}")
     fig, ax = plt.subplots()
     variable.view(ax=ax)
+    plt.axvline(x=input_value, color='black', linestyle='--', label=f'Hasil: {input_value}')
+    plt.ylabel("Derajat Keanggotaan")
+    plt.legend()
     st.pyplot(plt.gcf())
 
 with st.expander("Grafik Fungsi Keanggotaan"):
-    st.markdown("Fungsi keanggotaan Input")
+    st.markdown("# Fungsi keanggotaan Input")
     
     luarTabs, dalamTabs, kelembapanTabs = st.tabs(["Suhu Udara Luar", "Suhu Udara Dalam", "Kelembapan"])
     
     with luarTabs:
-        plot_fuzzy_sets(udara_luar, "Fungsi Keanggotaan Udara Luar")
-        
+        plot_fuzzy_sets(udara_luar, "Fungsi Keanggotaan Udara Luar", udara_luar_value)
+
     with dalamTabs:
-        plot_fuzzy_sets(udara_dalam, "Fungsi Keanggotaan Udara Dalam")
+        plot_fuzzy_sets(udara_dalam, "Fungsi Keanggotaan Udara Dalam", udara_dalam_value)
         
     with kelembapanTabs:
-        plot_fuzzy_sets(kelembapan, "Fungsi Keanggotaan Kelembapan")
+        plot_fuzzy_sets(kelembapan, "Fungsi Keanggotaan Kelembapan", kelembapan_value)
     
+    st.markdown("# Fungsi keanggotaan Output")
+    kipasTabs, pendinginTabs, pemanasTabs = st.tabs(["Kipas Angin", "Pendingin Udara", "Pemanas"])
     
+    with kipasTabs:
+        plot_fuzzy_sets(kipas_angin, "Fungsi Keanggotaan Kipas Angin", kipas_angin_sim.output['kipas_angin'])
+    
+    with pendinginTabs:
+        plot_fuzzy_sets(pendingin_udara, "Fungsi Keanggotaan Pendingin Udara", pendingin_udara_sim.output['pendingin_udara'])
+    
+    with pemanasTabs:
+        plot_fuzzy_sets(pemanas, "Fungsi Keanggotaan Pemanas", pemanas_sim.output['pemanas'])
