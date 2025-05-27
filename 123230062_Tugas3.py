@@ -40,8 +40,8 @@ with matrixTab:
     st.write("Matriks Alternatif")
     
     # Initialize matrix data in session state if not already present
-    if 'matrix_data' not in st.session_state:
-        st.session_state['matrix_data'] = np.zeros((len(alternatif), len(kriteria)))
+    # if 'matrix_data' not in st.session_state:
+    #     st.session_state['matrix_data'] = np.zeros((len(alternatif), len(kriteria)))
     
     # Collect matrix values
     matrix_data = []
