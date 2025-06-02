@@ -130,9 +130,9 @@ try:
 
         with st.expander(f"📑 Detail: {crit}"):
             st.write("**Matriks Perbandingan (5x5 pertama)**")
-            st.dataframe(pd.DataFrame(matrix[:5, :5], index=alternatif[:5], columns=alternatif[:5]))
+            st.dataframe(pd.DataFrame(matrix[:50, :50], index=alternatif[:50], columns=alternatif[:50]))
             st.write("**Normalisasi Matriks (5x5 pertama)**")
-            st.dataframe(pd.DataFrame(norm[:5, :5], index=alternatif[:5], columns=alternatif[:5]))
+            st.dataframe(pd.DataFrame(norm[:50, :50], index=alternatif[:50], columns=alternatif[:50]))
             st.write("**Eigenvector (semua rumah)**")
             st.dataframe(pd.DataFrame(w, index=alternatif, columns=["Eigenvector"]))
 
